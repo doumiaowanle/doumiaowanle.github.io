@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX 随机英雄枪械抽取器</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"微软雅黑",sans-serif;}
+        body{
+            background: #121826;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        h1{
+            color: #ff4655;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        .box{
+            background: #1e2738;
+            padding: 30px 50px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+            min-width: 320px;
+            box-shadow: 0 0 15px #ff465533;
+        }
+        .title{
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 12px;
+        }
+        .result{
+            font-size: 26px;
+            color: #ffd046;
+            font-weight: bold;
+        }
+        .btn-group{
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        button{
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-draw{
+            background: #ff4655;
+            color: white;
+        }
+        .btn-reset{
+            background: #34405a;
+            color: white;
+        }
+        button:hover{
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <h1>APEX 随机英雄 & 枪械</h1>
+
+    <div class="box">
+        <div class="title">随机英雄</div>
+        <div class="result" id="hero">点击抽取</div>
+    </div>
+
+    <div class="box">
+        <div class="title">主武器</div>
+        <div class="result" id="gun1">点击抽取</div>
+    </div>
+
+    <div class="box">
+        <div class="title">副武器</div>
+        <div class="result" id="gun2">点击抽取</div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn-draw" onclick="drawAll()">一键抽取</button>
+        <button class="btn-reset" onclick="resetAll()">重置</button>
+    </div>
+
+<script>
+    // APEX 全英雄列表
+    const heroList = [
+    "寻血猎犬", "直布罗陀", "命脉", "恶灵", "班加罗尔", "侵蚀", "幻象", "探路者",
+    "动力小子", " 沃特森", "密客", "亡灵", "罗芭", "兰伯特",
+    "地平线", "暴雷", "瓦尔基里", "希尔", "艾许", "疯玛吉",
+    "纽卡", "万蒂奇", "卡特莉丝", "变幻",
+    "导线管", "琉雀", "弹道","艾克赛尔"
+];
+
+    // APEX 枪械列表
+   const gunList = [
+    // 突击步枪
+    "R-301", "平行步枪", "赫姆洛克突击步枪", "哈沃克", "复仇女神",
+    // 冲锋枪
+    "R-99", "电能冲锋枪", "猎兽", "转换者", "C.A.R.",
+    // 霰弹枪
+    "EVA-8自动霰弹枪", "敖犬", "和平捍卫者", "莫桑比克",
+    // 轻机枪
+    "喷火轻机枪", "专注轻机枪", "L-STAR", "暴走轻机枪",
+    // 神射手/精确步枪
+    "G7侦察枪", "三重式狙击枪", "30-30连发枪", "波塞克复合弓",
+    // 狙击步枪
+    "长弓精确步枪", "哨兵狙击步枪", "充能步枪",
+    // 手枪
+    "RE-45自动手枪", "P2020手枪", "辅助手枪（小帮手）"
+];
+
+    // 随机取数组一项
+    function getRandom(arr){
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // 一键抽取
+    function drawAll(){
+        document.getElementById("hero").innerText = getRandom(heroList);
+        document.getElementById("gun1").innerText = getRandom(gunList);
+        document.getElementById("gun2").innerText = getRandom(gunList);
+    }
+
+    // 重置
+    function resetAll(){
+        document.getElementById("hero").innerText = "点击抽取";
+        document.getElementById("gun1").innerText = "点击抽取";
+        document.getElementById("gun2").innerText = "点击抽取";
+    }
+</script>
+</body>
+</html>
